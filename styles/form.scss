@@ -1,0 +1,32 @@
+@import "./mixins.scss";
+
+.inContainer {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    @include md {
+        margin-left: 0;
+    }
+}
+
+input {
+    display: flex;
+    border-radius: 8px;
+    border: 2px solid #00000040;
+    padding: 7px 10px;
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 6px;
+    @include md {
+        margin: 0;
+        margin-top: 8px;
+        width: 70%;
+        font-size: 18px;
+        font-weight: 700;
+    }
+}

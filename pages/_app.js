@@ -1,24 +1,44 @@
-// import '@/styles/globals.css'
-import '../pages/App.scss'
-import '../pages/components/Cart/Cart.scss'
-import '../pages/components/Cart/CartItem/CartItem.scss'
-import '../pages/components/Category/Category.scss'
-import '../pages/components/Footer/Footer.scss'
-import '../pages/components/Footer/Newsletter/Newsletter.scss'
-import '../pages/components/Header/HeaderF.scss'
-import '../pages/components/Header/HeaderF.scss'
-import '../pages/components/Header/Search/Search.scss'
-import '../pages/components/Home/Banner/Banner.scss'
-import '../pages/components/Home/Category/Category.scss'
-import '../pages/components/Home/Home.scss'
-import '../pages/components/Products/Product/Product.scss'
-import '../pages/components/Products/Products.scss'
-import '../pages/components/SingleProduct/RelatedProducts/RelatedProducts.scss'
-import '../pages/components/SingleProduct/SingleProduct.scss'
-import '../pages/components/summry/form.scss'
-import '../pages/components/summry/summry.scss'
-import '../pages/index.scss'
+import '../styles/index.scss'
+import '../styles/Cart.scss'
+import '../styles/CartItem.scss'
+import '../styles/Category.scss'
+import '../styles/Footer.scss'
+import '../styles/Newsletter.scss'
+import '../styles/HeaderF.scss'
+import '../styles/Search.scss'
+import '../styles/Banner.scss'
+import '../styles/Home.scss'
+import '../styles/Product.scss'
+import '../styles/Products.scss'
+import '../styles/RelatedProducts.scss'
+import '../styles/SingleProduct.scss'
+import '../styles/form.scss'
+import '../styles/summry.scss'
+import '../styles/Categories.scss'
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import AppContext from '@/utils/context'
+import HeaderF from '@/Components/Header/HeaderF'
+import Newsletter from '@/Components/Footer/Newsletter/Newsletter'
+import Footer from '@/Components/Footer/Footer'
+
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://isneakers-server.onrender.com/',
+  cache: new InMemoryCache(),
+});
+
+
+export default function MyApp({ Component, pageProps }) {
+
+  return <>
+    <ApolloProvider client={client} >
+      <AppContext>
+        <HeaderF />
+        <Component {...pageProps} />
+        <Newsletter />
+        <Footer />
+      </AppContext>
+    </ApolloProvider>
+  </>
 }

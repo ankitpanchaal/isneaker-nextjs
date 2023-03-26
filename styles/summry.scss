@@ -1,0 +1,102 @@
+@import "./mixins.scss";
+.summryContainer {
+    margin: 20px 0;
+    @include md {
+        margin: 45px 0;
+    }
+    .summLayout {
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+        @include md {
+            max-width: 1200px;
+        }
+        h2 {
+            font-weight: 700;
+        }
+        h3 {
+            margin: 16px 0;
+        }
+        .prodContainer {
+            border: 2px solid #00000020;
+            border-radius: 16px;
+            padding: 12px;
+            margin-top: 18px;
+            display: flex;
+            // align-self: center;
+            img {
+                object-fit: contain;
+                height: 80px;
+                width: 80px;
+                @include md {
+                    height: 120px;
+                    width: 120px;
+                }
+            }
+            .prodText {
+                margin: 0 20px;
+            }
+        }
+        .sizeContainer {
+            display: flex;
+            gap: 12px;
+            @include md {
+                gap: 16px;
+            }
+            .box {
+                cursor: pointer;
+                padding: 4px 8px;
+                border: 2px solid #00000040;
+                border-radius: 3px;
+                font-size: 18px;
+                font-weight: 700;
+                @include md {
+                    font-size: 22px;
+                    padding: 6px 12px;
+                }
+            }
+        }
+        a {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            @include md {
+                font-size: 14px;
+                margin-top: 22px;
+            }
+        }
+        .form {
+            margin: 16px 0;
+            width: 100%;
+            @include md {
+                margin: 28px 0;
+            }
+        }
+        .cart-buttons {
+            display: flex;
+            @include md {
+                margin-top: 30px;
+            }
+            .add-to-cart-button {
+                outline: 0;
+                border: 0;
+                height: 50px;
+                width: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-size: 16px;
+                color: white;
+                background: #8e2de2;
+                border-bottom: 3px solid #6516aa;
+                flex-grow: 1;
+                @include md {
+                    flex-grow: unset;
+                }
+                svg {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
