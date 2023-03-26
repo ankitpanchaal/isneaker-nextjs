@@ -1,9 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 import { MdDoneOutline } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom'
 
 const Success = () => {
-    const nav = useNavigate()
     return (
         <div
             style={{
@@ -47,7 +46,6 @@ const Success = () => {
             </div>
 
             <div
-                onClick={() => nav('/')}
                 style={{
                     background: '#030303',
                     color: '#fff',
@@ -58,7 +56,9 @@ const Success = () => {
                     marginTop: 20
                 }}
             >
-                BACK TO HOME
+                <Link className='Link' href={'/'} >
+                    BACK TO HOME
+                </Link>
             </div>
 
         </div>

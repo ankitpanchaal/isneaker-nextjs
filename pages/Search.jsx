@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../utils/context";
 import { urlFor } from "../Components/Products/Product/Product";
+import Link from "next/link";
 
 const Search = ({ setSearchModal }) => {
     const { products, } =
         useContext(Context);
     let data = products
     const [query, setQuery] = useState("");
-    const navigate = useNavigate();
 
     const onChange = (e) => {
         setQuery(e.target.value);
@@ -45,23 +44,24 @@ const Search = ({ setSearchModal }) => {
                             className="search-result-item"
                             key={item._id}
                             onClick={() => {
-                                navigate("/product/" + item?.slug?.current);
                                 setSearchModal(false);
                             }}
                         >
-                            <div className="image-container">
-                                <img
-                                    src={urlFor(item.image[0]).url()}
-                                />
-                            </div>
-                            <div className="prod-details">
-                                <span className="name">
-                                    {item?.name}
-                                </span>
-                                <span className="desc">
-                                    {item?.desc}
-                                </span>
-                            </div>
+                            <Link href={`/product/${item?.slug?.current}`} className='Link'>
+                                <div className="image-container">
+                                    <img
+                                        src={urlFor(item.image[0]).url()}
+                                    />
+                                </div>
+                                <div className="prod-details">
+                                    <span className="name">
+                                        {item?.name}
+                                    </span>
+                                    <span className="desc">
+                                        {item?.desc}
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
                     ))}
                 </div>
