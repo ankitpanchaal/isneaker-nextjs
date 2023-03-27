@@ -4,6 +4,7 @@ import Client from '../../utils/Client';
 import { urlFor } from '../../Components/Products/Product/Product';
 import Form from '../../Components/summry/form';
 import { useRouter } from 'next/router';
+import getStripe from '@/utils/getStripe';
 
 const QUERYS = gql`
 mutation($data:String!){
@@ -11,7 +12,7 @@ mutation($data:String!){
         orderObj
     }
 }
-`
+`;
 
 const Summry = () => {
 
@@ -22,21 +23,6 @@ const Summry = () => {
     );
 
     const [message, setMessage] = useState("");
-
-    // useEffect(() => {
-    //     // Check to see if this is a redirect back from Checkout
-    //     const query = new URLSearchParams(window.location.search);
-
-    //     if (query.get("success")) {
-    //         setMessage("Order placed! You will receive an email confirmation.");
-    //     }
-
-    //     if (query.get("canceled")) {
-    //         setMessage(
-    //             "Order canceled -- continue to shop around and checkout when you're ready."
-    //         );
-    //     }
-    // }, []);
 
     return message ? (
         <Message message={message} />
@@ -60,7 +46,10 @@ const ProductDisplay = () => {
 
     const router = useRouter();
     const id = router.query.summry
-    console.log(">>>>?", id);
+
+    const handleCheckout = () => {
+
+    }
 
     useEffect(() => {
         Client
@@ -95,11 +84,28 @@ const ProductDisplay = () => {
         refetchQueries: [{ query: QUERYS }],
     });
 
+
     const HadelMakePayment = async (e) => {
-        await Add(OrderData)
+        // await Add(OrderData);
+
+        const stripe = await getStripe();
+
+        const response = await fetch('/api/stripe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(currentProduct),
+        });
+
+        if (response.statusCode === 500) return;
+
+        const data = await response.json();
+        // toast.loading('Redirecting...');
+        // console.log("data", data);
+        stripe.redirectToCheckout({ sessionId: data.id });
     }
 
-    if (!data) return;
 
     return (
         <div className='summryContainer' >
