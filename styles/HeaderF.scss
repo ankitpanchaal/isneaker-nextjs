@@ -4,7 +4,8 @@
     width: 100%;
     padding: 0 20px;
     z-index: 99;
-    background-color: #212121;
+    background-color: black;
+    backdrop-filter: blur(10px);
     color: white;
     border-bottom: 1px solid;
     border-color: rgba(0, 0, 0, 0.1);
@@ -84,7 +85,7 @@
         }
     }
     &.sticky-header {
-        background-color: #212121;
+        background: linear-gradient(#323232, #00000099);
         color: white;
         position: sticky;
         top: 0;

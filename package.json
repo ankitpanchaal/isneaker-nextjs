@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next dev",
-    "start": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
+    "react-spinners": "^0.13.8",
     "stripe": "^11.16.0"
   },
   "devDependencies": {
