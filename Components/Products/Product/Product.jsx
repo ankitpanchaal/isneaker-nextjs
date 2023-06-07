@@ -20,7 +20,7 @@ const Product = ({ data, id }) => {
             <Link href={`/SingleProduct/${slug}`} as={`/SingleProduct/${slug}`} className='Link' >
                 <div className="thumbnail">
                     <img
-                        src={urlFor(data.image[0]).url()}
+                        src={urlFor(data?.image?.[0]).url()}
                         alt=""
                     />
                 </div>

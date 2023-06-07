@@ -35,7 +35,23 @@ const Home = () => {
         ).then(res => setBannerData(res))
         setLoading(false);
     }, []);
-    // console.log(bannerData);
+
+    // const newProduct = {
+    //     _type: 'product',
+    //     name: 'New Product Name',
+    //     price: 99,
+    // };
+
+    // function handelClick() {
+    //     console.log("GOT");
+    //     Client.create(newProduct)
+    //         .then(response => {
+    //             console.log('Product created: ', response);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error creating product: ', error);
+    //         });
+    // }
 
     return (
         loading ?
